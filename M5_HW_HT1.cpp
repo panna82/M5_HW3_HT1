@@ -60,6 +60,9 @@ public:
 
 	int get_element(int num)
 	{
+		if (num < 0) { std::cout << "Введен некорректный индекс! Будет выведен первый элемент массива. "; num = 0; }
+		else if (num > lsize-1) { std::cout << "Введен некорректный индекс! Будет выведен последний элемент массива: "; num = lsize-1; }
+	
 		return arr[num];
 	}
 };
@@ -70,6 +73,7 @@ int main()
 	SetConsoleCP(1251);
 
 	int fsize = 5;
+
 	try {
 		smart_array arr(fsize);
 
@@ -86,10 +90,11 @@ int main()
 		arr.print_arr();
 		std::cout << std::endl;
 	
-		std::cout <<"arr.get_element(1) " << arr.get_element(1) << std::endl;
+		std::cout << arr.get_element(-1) << std::endl;
 	}
 	catch (const std::exception& ex) {
 		std::cout << ex.what() << std::endl;
 	}
+	return 0;
 }
 
